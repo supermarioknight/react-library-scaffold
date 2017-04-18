@@ -40,7 +40,7 @@ import ReactDOM from 'react-dom';
 
 ReacDOM.render(
   <Component initialCount={2} />,
-  document.getElementById('container)
+  document.getElementById('container')
 );
 ```
 

@@ -6,7 +6,7 @@
 [![codecov](https://codecov.io/gh/madou/{{librayName}}/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/{{libraryName}})
 [![Dependency Status](http://img.shields.io/david/madou/{{libraryName}}.svg?style=flat-square)](https://david-dm.org/madou/{{libraryName}})
 
-> Short sentance for what this module does
+> Short sentance for what this module does!
 
 ## How to Install
 

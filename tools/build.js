@@ -9,6 +9,7 @@
 
 'use strict';
 
+const less = require('rollup-plugin-less');
 const fs = require('fs');
 const del = require('del');
 const rollup = require('rollup');
@@ -25,12 +26,21 @@ for (const format of ['es6', 'cjs', 'umd']) {
   promise = promise.then(() => rollup.rollup({
     entry: 'src/index.js',
     external: Object.keys(pkg.dependencies),
-    plugins: [babel(Object.assign(pkg.babel, {
-      babelrc: false,
-      exclude: 'node_modules/**',
-      runtimeHelpers: true,
-      presets: pkg.babel.presets.map((x) => (x === 'es2015' ? 'es2015-rollup' : x)),
-    }))],
+    plugins: [
+      babel(Object.assign(pkg.babel, {
+        babelrc: false,
+        include: '**/**.js',
+        exclude: 'node_modules/**',
+        runtimeHelpers: true,
+        presets: pkg.babel.presets.map((x) => (x === 'es2015' ? 'es2015-rollup' : x)),
+      })),
+      // Start React configuration
+      less({
+        // We only want to output once. This is just a dirty hack.
+        output: format === 'es6' && 'dist/styles.css',
+      }),
+      // End React configuration
+    ],
   }).then((bundle) => bundle.write({
     dest: `dist/${format === 'cjs' ? 'index' : `index.${format}`}.js`,
     format,

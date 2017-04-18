@@ -35,6 +35,7 @@ returnsTwo();
 ### `<Component />`
 
 ```javascript
+import 'react-library-boilerplate/styles.css';
 import { Component } from 'react-library-boilerplate';
 import ReactDOM from 'react-dom';
 

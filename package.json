@@ -1,8 +1,8 @@
 {
-  "name": "projectName",
+  "name": "react-library-boilerplate",
   "version": "0.0.0",
-  "description": "{{projectDescription}}",
-  "repository": "madou/{{projectName}}",
+  "description": "Project description.",
+  "repository": "madou/react-library-boilerplate",
   "author": "Michael Dougall",
   "license": "MIT",
   "keywords": [],

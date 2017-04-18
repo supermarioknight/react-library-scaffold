@@ -24,6 +24,12 @@ yarn add {{libraryName}}
 
 ## Usage
 
+Run react storybook.
+
+```bash
+npm start
+```
+
 {{Short usage example here}}
 
 ## Api

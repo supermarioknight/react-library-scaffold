@@ -9,6 +9,7 @@
   "main": "index.js",
   "jsnext:main": "index.es6.js",
   "scripts": {
+    "start": "npm run storybook",
     "test": "npm run lint && npm run flow && npm run cover",
     "lint": "eslint src test tools",
     "unit": "BABEL_ENV=test mocha \"src/**/*.spec.js\"",
@@ -18,15 +19,16 @@
     "codecov": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
     "build": "node tools/build",
     "prepublish": "npm run build",
-    "publish:docs": "easystatic deploy docs --repo madou/function-batch",
-    "start": "easystatic start docs",
     "preversion": "npm test",
-    "postversion": "git push && git push --tags"
+    "postversion": "git push && git push --tags",
+    "storybook": "start-storybook -p 6006",
+    "build-storybook": "build-storybook"
   },
   "dependencies": {
     "react": "^15.5.4"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.21.0",
     "app-module-path": "^2.2.0",
     "babel-cli": "^6.8.0",
     "babel-core": "^6.8.0",
@@ -61,6 +63,7 @@
     "eslint-plugin-react": "^5.0.1",
     "flow-bin": "^0.43.1",
     "istanbul": "^1.0.0-alpha.2",
+    "less-loader": "^4.0.3",
     "lodash": "^4.17.4",
     "mocha": "^2.4.5",
     "nyc": "^10.2.0",

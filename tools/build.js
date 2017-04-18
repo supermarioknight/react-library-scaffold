@@ -35,9 +35,9 @@ for (const format of ['es6', 'cjs', 'umd']) {
         presets: pkg.babel.presets.map((x) => (x === 'es2015' ? 'es2015-rollup' : x)),
       })),
       // Start React configuration
-      less({
+      format === 'es6' && less({
         // We only want to output once. This is just a dirty hack.
-        output: format === 'es6' && 'dist/styles.css',
+        output: 'dist/styles.css',
       }),
       // End React configuration
     ],

@@ -24,7 +24,7 @@ yarn add react-library-boilerplate
 
 ## Usage
 
-### returnsTwo
+### returnsTwo(): number
 
 ```js
 import returnsTwo from 'react-library-boilerplate';
@@ -44,12 +44,6 @@ ReacDOM.render(
   document.getElementById('container')
 );
 ```
-
-## Api
-
-### returnsTwo(): number
-
-### `<Component />`
 
 | prop    | type    | required |
 |---------|---------|----------|

@@ -1,18 +1,10 @@
-# CHANGELOG
+# Change Log
+All notable changes to this project will be documented in this file.
 
-Keep all pending changes under `## [Unreleased][]` and then release with `np major|minor|patch`.
+The format is based on [Keep a Changelog](http://keepachangelog.com/)
+and this project adheres to [Semantic Versioning](http://semver.org/).
 
-## Log structure
-
-```md
-## [Unreleased|major.minor.patch] - yyyy/mm/dd
-
-### Added|Changed|Fixed|Removed
-
-- Changes
-
-```
 
 ## [Unreleased][]
-
+### Changed
 - Things that have changed

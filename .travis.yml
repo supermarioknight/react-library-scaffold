@@ -1,16 +1,16 @@
-sudo: false
 language: node_js
 node_js:
   - '7'
-  - '6'
-  - '5'
-  - '4'
 script:
   - npm test
 after_success:
   - npm run codecov
 before_deploy:
   - cd dist
+cache:
+  yarn: true
+  directories:
+    - node_modules
 deploy:
   provider: npm
   skip_cleanup: true

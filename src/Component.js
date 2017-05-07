@@ -2,8 +2,6 @@
 
 import React, { Component } from 'react';
 
-import './styles.less';
-
 type Props = {
   initialCount: number,
 };

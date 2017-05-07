@@ -1,15 +1,3 @@
-/**
- * function-batch
- *
- * Copyright © 2016 Michael Dougall. All rights reserved.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE.txt file in the root directory of this source tree.
- */
-
-'use strict';
-
-const less = require('rollup-plugin-less');
 const fs = require('fs');
 const del = require('del');
 const rollup = require('rollup');
@@ -19,7 +7,13 @@ const pkg = require('../package.json');
 let promise = Promise.resolve();
 
 // Clean up the output directory
-promise = promise.then(() => del(['dist/*']));
+promise = promise.then(() => del(['dist/*'])).then(() => {
+  try {
+    fs.statSync('dist');
+  } catch (e) {
+    fs.mkdirSync('dist');
+  }
+});
 
 // Compile source code into a distributable format with Babel
 for (const format of ['es6', 'cjs', 'umd']) {
@@ -34,12 +28,6 @@ for (const format of ['es6', 'cjs', 'umd']) {
         runtimeHelpers: true,
         presets: pkg.babel.presets.map((x) => (x === 'es2015' ? 'es2015-rollup' : x)),
       })),
-      // Start React configuration
-      format === 'es6' && less({
-        // We only want to output once. This is just a dirty hack.
-        output: 'dist/styles.css',
-      }),
-      // End React configuration
     ],
   }).then((bundle) => bundle.write({
     dest: `dist/${format === 'cjs' ? 'index' : `index.${format}`}.js`,
@@ -59,6 +47,7 @@ promise = promise.then(() => {
   fs.writeFileSync('dist/package.json', JSON.stringify(pkg, null, '  '), 'utf-8');
   fs.writeFileSync('dist/LICENSE', fs.readFileSync('LICENSE', 'utf-8'), 'utf-8');
   fs.writeFileSync('dist/README.md', fs.readFileSync('README.md', 'utf-8'), 'utf-8');
+  fs.writeFileSync('dist/example.gif', fs.readFileSync('example.gif', 'utf-8'), 'utf-8');
 });
 
 promise.catch((err) => console.error(err.stack)); // eslint-disable-line no-console

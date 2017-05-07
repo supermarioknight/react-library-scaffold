@@ -6,54 +6,61 @@
 [![codecov](https://codecov.io/gh/madou/react-library-boilerplate/branch/master/graph/badge.svg)](https://codecov.io/gh/madou/react-library-boilerplate)
 [![Dependency Status](http://img.shields.io/david/madou/react-library-boilerplate.svg?style=flat-square)](https://david-dm.org/madou/react-library-boilerplate)
 
-> Short sentance for what this module does!
+Quick description of what it does!
 
-## How to Install
+<p align="center">
+  <img src="https://github.com/madou/react-library-boilerplate/blob/master/example.gif?raw=true" style="margin:0 auto" />
+</p>
 
-Using either npm:
+## Installation
 
 ```sh
 npm install react-library-boilerplate
 ```
 
-Or yarn:
-
-```sh
-yarn add react-library-boilerplate
-```
-
 ## Usage
-
-### returnsTwo(): number
-
-```js
-import returnsTwo from 'react-library-boilerplate';
-returnsTwo();
-// 2
-```
-
-### `<Component />`
 
 ```javascript
 import 'react-library-boilerplate/styles.css';
-import { Component } from 'react-library-boilerplate';
+import ReactStickyHeader from 'react-library-boilerplate';
 import ReactDOM from 'react-dom';
 
-ReacDOM.render(
-  <Component initialCount={2} />,
+ReactDOM.render(
+  <ReactStickyHeader
+    // This will be the sticky strip.
+    header={
+      <div className={cx('Header_root', { sticky })}>
+        <h1 className="Header_title">ReactStickyHeader</h1>
+
+        <ul className="Header_links">
+          <li className="Header_link">When</li>
+          <li className="Header_link">Why</li>
+          <li className="Header_link">About</li>
+        </ul>
+      </div>
+    }
+  >
+    <section>
+      // More header stuff here, this won't be sticky.
+    </section>
+  </ReactStickyHeader>,
   document.getElementById('container')
 );
 ```
 
-| prop    | type    | required |
-|---------|---------|----------|
-| initialCount | number  | no      |
+| prop | type | required |
+|-|-|-|
+| children | Children  | no |
+| header | Children | yes |
+| backgroundImage | string | no |
+| backgroundColor | string | no |
+| headerOnly | boolean | no |
+| onSticky | (boolean) => void | no |
+| className | string | no |
 
-## Boilerplate Information
+### React Story Book
 
-This boilerplate was made to support nyc, travis, npm publish, codecov, react, react storybook, mocha, es6 builds, all out of the box.
-
-### Local development
+To run the component in various modes, run the following command then go to `http://localhost:6006/`.
 
 ```bash
 npm start
@@ -62,13 +69,5 @@ npm start
 ### Testing
 
 ```bash
-npm run tdd
-```
-
-### Publishing
-
-Use `np` for publishing to npm. Make sure `CHANGELOG.md` is updated.
-
-```bash
-np major|minor|patch
+npm test
 ```

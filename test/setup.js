@@ -3,9 +3,9 @@ import path from 'path';
 import { addPath } from 'app-module-path';
 import noop from 'lodash/noop';
 
-// global.React = require('react');
+global.React = require('react');
 
-// require('jsdom-global')();
+require('jsdom-global')();
 
 addPath(path.join(__dirname, '..', ''));
 addPath(path.join(__dirname, '..', '/src'));
